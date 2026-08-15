@@ -1,0 +1,6 @@
+{
+  "name": "Kindred - Hobby & Passion Dating",
+  "description": "A full-stack dating and meaningful connection platform built around local hobbies, shared passions, real-time messaging, video calls, community events, and AI-assisted date planning.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
