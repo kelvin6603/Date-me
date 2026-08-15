@@ -20,33 +20,40 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenSafety,
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-stone-900/95 backdrop-blur-md border-b border-stone-800 text-stone-100 transition-all">
+    <header className="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80 text-slate-100 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo & Tagline */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('discover')}>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 via-rose-500 to-amber-400 flex items-center justify-center shadow-lg shadow-rose-950/40">
-              <Flame className="w-6 h-6 text-white" />
+        <div className="flex items-center justify-between h-16 sm:h-20">
+          {/* Logo & Identity */}
+          <div
+            className="flex items-center space-x-3.5 cursor-pointer group"
+            onClick={() => setActiveTab('discover')}
+          >
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-500 via-rose-600 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-500/20 group-hover:scale-105 transition-transform duration-300">
+              <Flame className="w-5 h-5 text-white fill-white" />
             </div>
             <div>
-              <div className="flex items-center space-x-1.5">
-                <span className="font-serif text-2xl font-bold tracking-tight text-stone-50">Kindred</span>
-                <span className="text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                  Hobby Match
+              <div className="flex items-center space-x-2">
+                <span className="text-xl sm:text-2xl font-black tracking-tight text-white font-sans">
+                  KINDRED
+                </span>
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                  Curated
                 </span>
               </div>
-              <p className="text-[11px] text-stone-400 hidden sm:block">Dating for passionate hobbyists</p>
+              <p className="text-[11px] text-slate-400 font-medium hidden sm:block">
+                Hobby-Driven Matchmaking
+              </p>
             </div>
           </div>
 
-          {/* Navigation Tabs */}
-          <nav className="hidden md:flex items-center space-x-1 bg-stone-950/60 p-1.5 rounded-2xl border border-stone-800/80">
+          {/* Centered Segmented Navigation */}
+          <nav className="hidden md:flex items-center space-x-1 bg-slate-900/90 p-1.5 rounded-full border border-slate-800 shadow-inner">
             <button
               onClick={() => setActiveTab('discover')}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              className={`flex items-center space-x-2 px-4.5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 ${
                 activeTab === 'discover'
-                  ? 'bg-gradient-to-r from-rose-600 to-amber-600 text-white shadow-md'
-                  : 'text-stone-300 hover:text-white hover:bg-stone-800/60'
+                  ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-md shadow-rose-500/25'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
               }`}
             >
               <Heart className="w-4 h-4" />
@@ -55,16 +62,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={() => setActiveTab('chat')}
-              className={`relative flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              className={`relative flex items-center space-x-2 px-4.5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 ${
                 activeTab === 'chat'
-                  ? 'bg-gradient-to-r from-rose-600 to-amber-600 text-white shadow-md'
-                  : 'text-stone-300 hover:text-white hover:bg-stone-800/60'
+                  ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-md shadow-rose-500/25'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
               }`}
             >
               <MessageCircle className="w-4 h-4" />
-              <span>Chats & Matches</span>
+              <span>Connections</span>
               {unreadCount > 0 && (
-                <span className="w-5 h-5 rounded-full bg-rose-500 text-white text-[11px] font-bold flex items-center justify-center animate-pulse">
+                <span className="w-4.5 h-4.5 rounded-full bg-rose-500 text-white text-[10px] font-black flex items-center justify-center shadow">
                   {unreadCount}
                 </span>
               )}
@@ -72,23 +79,23 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={() => setActiveTab('events')}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              className={`flex items-center space-x-2 px-4.5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 ${
                 activeTab === 'events'
-                  ? 'bg-gradient-to-r from-rose-600 to-amber-600 text-white shadow-md'
-                  : 'text-stone-300 hover:text-white hover:bg-stone-800/60'
+                  ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-md shadow-rose-500/25'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
               }`}
             >
               <Calendar className="w-4 h-4" />
-              <span>Hobby Events</span>
-              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span>Meetups & Sparks</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
             </button>
 
             <button
               onClick={() => setActiveTab('wingmate')}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              className={`flex items-center space-x-2 px-4.5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 ${
                 activeTab === 'wingmate'
-                  ? 'bg-gradient-to-r from-rose-600 to-amber-600 text-white shadow-md'
-                  : 'text-stone-300 hover:text-white hover:bg-stone-800/60'
+                  ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-md shadow-rose-500/25'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
               }`}
             >
               <Sparkles className="w-4 h-4 text-amber-400" />
@@ -96,12 +103,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </nav>
 
-          {/* Right Action Tools */}
+          {/* Right Action Tools & Profile */}
           <div className="flex items-center space-x-3">
             <button
               onClick={onOpenPassport}
-              className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold transition"
-              title="Kindred Passport & Perks"
+              className="hidden sm:flex items-center space-x-1.5 px-3.5 py-2 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold transition"
+              title="Kindred Plus Membership"
             >
               <Crown className="w-3.5 h-3.5 text-amber-400" />
               <span>Kindred Plus</span>
@@ -109,55 +116,59 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={onOpenSafety}
-              className="p-2 rounded-xl bg-stone-800/80 hover:bg-stone-700 text-stone-300 hover:text-white border border-stone-700 transition"
+              className="p-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 transition"
               title="Safety & Trust Center"
             >
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
             </button>
 
-            {/* Profile Avatar */}
+            {/* Profile Avatar Pill */}
             <button
               onClick={() => setActiveTab('profile')}
-              className={`flex items-center space-x-2 p-1 pl-2 pr-3 rounded-full border transition ${
+              className={`flex items-center space-x-2.5 pl-1.5 pr-3 py-1.5 rounded-full border transition ${
                 activeTab === 'profile'
-                  ? 'border-amber-500 bg-stone-800'
-                  : 'border-stone-700 bg-stone-800/70 hover:border-stone-600'
+                  ? 'border-rose-500 bg-slate-900 shadow-sm'
+                  : 'border-slate-800 bg-slate-900/80 hover:border-slate-700'
               }`}
             >
-              <img
-                src={currentUser.photos[0]?.url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'}
-                alt={currentUser.name}
-                className="w-8 h-8 rounded-full object-cover ring-2 ring-amber-500/40"
-              />
-              <span className="text-xs font-medium text-stone-200 hidden sm:inline">{currentUser.name.split(' ')[0]}</span>
+              <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-rose-500 to-amber-500 p-0.5">
+                <img
+                  src={currentUser.photos[0]?.url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'}
+                  alt={currentUser.name}
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
+              <span className="text-xs font-semibold text-slate-200 hidden sm:inline">
+                {currentUser.name.split(' ')[0]}
+              </span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Bottom Navigation Bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-stone-950/95 backdrop-blur-lg border-t border-stone-800 px-4 py-2">
+      {/* Mobile Floating Navigation Bar */}
+      <div className="md:hidden fixed bottom-4 left-4 right-4 z-50 bg-slate-950/90 backdrop-blur-2xl border border-slate-800/90 rounded-full px-5 py-2.5 shadow-2xl shadow-black/80">
         <div className="flex items-center justify-around">
           <button
             onClick={() => setActiveTab('discover')}
-            className={`flex flex-col items-center space-y-1 p-2 ${
-              activeTab === 'discover' ? 'text-rose-400' : 'text-stone-400'
+            className={`flex flex-col items-center space-y-1 transition ${
+              activeTab === 'discover' ? 'text-rose-400 font-bold scale-105' : 'text-slate-400'
             }`}
           >
             <Heart className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Discover</span>
+            <span className="text-[10px]">Discover</span>
           </button>
 
           <button
             onClick={() => setActiveTab('chat')}
-            className={`relative flex flex-col items-center space-y-1 p-2 ${
-              activeTab === 'chat' ? 'text-rose-400' : 'text-stone-400'
+            className={`relative flex flex-col items-center space-y-1 transition ${
+              activeTab === 'chat' ? 'text-rose-400 font-bold scale-105' : 'text-slate-400'
             }`}
           >
             <MessageCircle className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Chat</span>
+            <span className="text-[10px]">Matches</span>
             {unreadCount > 0 && (
-              <span className="absolute top-1 right-2 w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] font-bold flex items-center justify-center">
+              <span className="absolute -top-1 right-1 w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] font-black flex items-center justify-center">
                 {unreadCount}
               </span>
             )}
@@ -165,32 +176,32 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => setActiveTab('events')}
-            className={`flex flex-col items-center space-y-1 p-2 ${
-              activeTab === 'events' ? 'text-rose-400' : 'text-stone-400'
+            className={`flex flex-col items-center space-y-1 transition ${
+              activeTab === 'events' ? 'text-rose-400 font-bold scale-105' : 'text-slate-400'
             }`}
           >
             <Calendar className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Events</span>
+            <span className="text-[10px]">Events</span>
           </button>
 
           <button
             onClick={() => setActiveTab('wingmate')}
-            className={`flex flex-col items-center space-y-1 p-2 ${
-              activeTab === 'wingmate' ? 'text-rose-400' : 'text-stone-400'
+            className={`flex flex-col items-center space-y-1 transition ${
+              activeTab === 'wingmate' ? 'text-rose-400 font-bold scale-105' : 'text-slate-400'
             }`}
           >
             <Sparkles className="w-5 h-5" />
-            <span className="text-[10px] font-medium">AI Coach</span>
+            <span className="text-[10px]">AI Coach</span>
           </button>
 
           <button
             onClick={() => setActiveTab('profile')}
-            className={`flex flex-col items-center space-y-1 p-2 ${
-              activeTab === 'profile' ? 'text-rose-400' : 'text-stone-400'
+            className={`flex flex-col items-center space-y-1 transition ${
+              activeTab === 'profile' ? 'text-rose-400 font-bold scale-105' : 'text-slate-400'
             }`}
           >
             <User className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Profile</span>
+            <span className="text-[10px]">Profile</span>
           </button>
         </div>
       </div>

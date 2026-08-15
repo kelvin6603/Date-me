@@ -279,26 +279,36 @@ export default function App() {
   const totalUnreadMessages = matches.reduce((acc, m) => acc + (m.unreadCount || 0), 0);
 
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-100 flex flex-col selection:bg-amber-500 selection:text-white font-sans">
+    <div className="min-h-screen bg-[#0B0F17] bg-ambient-mesh text-slate-100 flex flex-col selection:bg-rose-500 selection:text-white font-sans antialiased">
       {/* Top Main Navigation */}
       <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        matchesCount={matches.length}
+        activeTab={activeTab === 'matches' ? 'chat' : activeTab}
+        setActiveTab={(tab) => {
+          if (tab === 'chat') setActiveTab('matches');
+          else if (tab === 'profile') setShowProfileEditor(true);
+          else setActiveTab(tab);
+        }}
         unreadCount={totalUnreadMessages}
-        onOpenProfileEditor={() => setShowProfileEditor(true)}
         currentUser={currentUser}
+        onOpenPassport={() => {}}
+        onOpenSafety={() => {}}
       />
 
       {/* Main View Area */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-2 sm:px-4 py-3 sm:py-6 flex flex-col justify-start">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6 flex flex-col justify-start">
         {activeTab === 'discover' && (
           <DiscoverFeed
             profiles={profiles}
             currentUser={currentUser}
+            matches={matches}
             onLike={handleLikeProfile}
             onPass={handlePassProfile}
             onSuperlike={handleSuperlikeProfile}
+            onSelectMatch={(matchId) => {
+              setActiveChatMatchId(matchId);
+              setActiveTab('matches');
+            }}
+            onOpenEvents={() => setActiveTab('events')}
             onOpenDateSpotFinder={(profile) => {
               const fakeMatch: Match = {
                 id: `temp_${profile.id}`,

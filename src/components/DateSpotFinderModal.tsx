@@ -4,12 +4,8 @@ import {
   Sparkles,
   ExternalLink,
   Calendar,
-  Send,
   X,
   Compass,
-  Check,
-  Building,
-  Coffee,
 } from 'lucide-react';
 import { Match, UserProfile } from '../types';
 
@@ -78,33 +74,33 @@ export const DateSpotFinderModal: React.FC<DateSpotFinderModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-      <div className="relative w-full max-w-2xl max-h-[90vh] bg-stone-900 border border-stone-800 rounded-3xl p-6 sm:p-8 text-stone-100 shadow-2xl overflow-y-auto flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in">
+      <div className="relative w-full max-w-2xl max-h-[90vh] bg-slate-900 border border-slate-800 rounded-[32px] p-6 sm:p-8 text-slate-100 shadow-2xl overflow-y-auto flex flex-col">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-400 hover:text-white transition"
+          className="absolute top-5 right-5 p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header */}
-        <div className="flex items-center space-x-2 mb-2">
-          <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
+        <div className="flex items-center space-x-3 mb-2">
+          <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
             <Compass className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="font-serif text-2xl font-bold text-stone-50">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
               Hobby Date Spot Planner
             </h2>
-            <p className="text-xs text-stone-400">
+            <p className="text-xs text-slate-400">
               Powered by Google Maps Grounding & Gemini 3.7 Flash
             </p>
           </div>
         </div>
 
         {match && (
-          <p className="text-xs text-stone-300 mb-4">
+          <p className="text-xs text-slate-300 mb-4">
             Planning a first hobby meetup with <span className="font-semibold text-rose-400">{match.user.name}</span>.
           </p>
         )}
@@ -112,7 +108,7 @@ export const DateSpotFinderModal: React.FC<DateSpotFinderModalProps> = ({
         {/* Search Inputs */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
           <div>
-            <label className="text-[11px] font-bold text-stone-400 uppercase tracking-wider block mb-1">
+            <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
               Shared Hobby Theme
             </label>
             <input
@@ -120,12 +116,12 @@ export const DateSpotFinderModal: React.FC<DateSpotFinderModalProps> = ({
               value={hobby}
               onChange={(e) => setHobby(e.target.value)}
               placeholder="e.g. Specialty Coffee, Bouldering, Pottery..."
-              className="w-full px-3.5 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-100 focus:outline-none focus:border-amber-500"
+              className="w-full px-3.5 py-2.5 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-slate-100 focus:outline-none focus:border-rose-500 transition"
             />
           </div>
 
           <div>
-            <label className="text-[11px] font-bold text-stone-400 uppercase tracking-wider block mb-1">
+            <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
               Neighborhood / Area
             </label>
             <input
@@ -133,7 +129,7 @@ export const DateSpotFinderModal: React.FC<DateSpotFinderModalProps> = ({
               value={neighborhood}
               onChange={(e) => setNeighborhood(e.target.value)}
               placeholder="e.g. Hayes Valley, SoMa, Mission District..."
-              className="w-full px-3.5 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-100 focus:outline-none focus:border-amber-500"
+              className="w-full px-3.5 py-2.5 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-slate-100 focus:outline-none focus:border-rose-500 transition"
             />
           </div>
         </div>
@@ -141,7 +137,7 @@ export const DateSpotFinderModal: React.FC<DateSpotFinderModalProps> = ({
         <button
           onClick={handleSearch}
           disabled={isLoading}
-          className="w-full py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 hover:opacity-95 text-white text-xs font-semibold shadow-md flex items-center justify-center space-x-2 transition mb-6"
+          className="w-full py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 hover:opacity-95 text-white text-xs font-bold shadow-lg shadow-rose-500/25 flex items-center justify-center space-x-2 transition mb-6"
         >
           <Sparkles className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
           <span>{isLoading ? 'Searching Google Maps...' : 'Find Verified Local Hobby Date Spots'}</span>
@@ -150,21 +146,21 @@ export const DateSpotFinderModal: React.FC<DateSpotFinderModalProps> = ({
         {/* Results Area */}
         {isLoading ? (
           <div className="py-12 flex flex-col items-center justify-center space-y-3 text-center">
-            <div className="w-10 h-10 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
-            <p className="text-xs text-stone-400">
+            <div className="w-10 h-10 rounded-full border-2 border-rose-500 border-t-transparent animate-spin" />
+            <p className="text-xs text-slate-400">
               Querying Google Maps grounding for authentic {hobby} venues...
             </p>
           </div>
         ) : hasSearched && resultContent ? (
           <div className="space-y-4">
-            <div className="p-4 rounded-2xl bg-stone-950/80 border border-stone-800 text-xs text-stone-200 leading-relaxed whitespace-pre-wrap">
+            <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-slate-200 leading-relaxed whitespace-pre-wrap">
               {resultContent}
             </div>
 
             {/* Grounding Maps Links */}
             {groundingChunks && groundingChunks.length > 0 && (
-              <div className="p-3 rounded-2xl bg-stone-950/40 border border-stone-800">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block mb-2">
+              <div className="p-3 rounded-2xl bg-slate-950/60 border border-slate-800">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block mb-2 px-1">
                   Verified Google Maps Locations:
                 </span>
                 <div className="space-y-1.5">
@@ -179,13 +175,13 @@ export const DateSpotFinderModal: React.FC<DateSpotFinderModalProps> = ({
                         href={uri}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-center justify-between p-2 rounded-xl bg-stone-800/80 hover:bg-stone-700 text-xs text-stone-200 transition"
+                        className="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-xs text-slate-200 transition"
                       >
                         <div className="flex items-center space-x-2 truncate">
                           <MapPin className="w-3.5 h-3.5 text-rose-400 shrink-0" />
                           <span className="truncate font-medium">{title}</span>
                         </div>
-                        <ExternalLink className="w-3.5 h-3.5 text-stone-400 shrink-0" />
+                        <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                       </a>
                     );
                   })}
@@ -198,7 +194,7 @@ export const DateSpotFinderModal: React.FC<DateSpotFinderModalProps> = ({
               <div className="pt-2 flex items-center justify-between">
                 <button
                   onClick={() => handleSendInvite(`Meetup for ${hobby} in ${neighborhood}`)}
-                  className="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs flex items-center justify-center space-x-2 shadow-lg transition"
+                  className="w-full py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-rose-500/25 hover:opacity-95 transition"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>Send Date Proposal to {match.user.name.split(' ')[0]}</span>
@@ -207,7 +203,7 @@ export const DateSpotFinderModal: React.FC<DateSpotFinderModalProps> = ({
             )}
           </div>
         ) : (
-          <div className="py-8 text-center text-stone-500 text-xs">
+          <div className="py-8 text-center text-slate-500 text-xs">
             Enter your shared hobby and local neighborhood above to discover top-rated date spots.
           </div>
         )}
